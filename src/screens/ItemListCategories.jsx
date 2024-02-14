@@ -1,17 +1,41 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import React, {useEffect, useState} from "react";
 import Header from "../components/Header";
-import Categories from "../components/Categories";
 import { colors } from "../global/colors";
+import allProducts from "../data/products.json";
+import ProductItem from "../components/ProductItem";
+import Search from "../components/Search";
 
 const ItemListCategories = ({category}) =>{
+
+    const [products, setProducts] = useState([])
+    const [keyword, setKeyword] = useState("")
+
+    useEffect(()=>{
+        if (category) {
+            const products = allProducts.filter ( product => product.category === category);
+            const productsFiltered = products.filter( product => product.title.includes(keyword))
+            setProducts(productsFiltered)
+        } else {
+            const productsFiltered = allProducts.filter( product => product.title.includes(keyword))
+            setProducts(productsFiltered)
+        }
+    }, [category,keyword])
+
     return (
         <>
-            <Header title={category}/>
-            <View style={styles.container}>
-                <Text>Item List Category </Text>
+            <View style={styles.headerInput}>     
+                <Header title={category || "Productos"} style = {styles.headerProduct}/>
+            </View> 
+
+            <View style={styles.container}>  
+                    <Search onSearch={setKeyword}/>
+                        <FlatList 
+                        data={products}
+                        renderItem={({item})=><ProductItem item ={item}/>}
+                        keyExtractor={(item)=> item.id}
+                        />
             </View>
-            <Categories />
         </>
     )
 };
@@ -21,9 +45,21 @@ export default ItemListCategories;
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: colors.petrol_200,
-        flexDirection: "row",
+        backgroundColor: colors.lighten,
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+    },
+    text: {
+        fontSize: 25,
+    },
+    headerProduct:{
+        backgroundColor: colors.lighten,
+        color: 'black',
+        fontSize: 20,
+    },
+    headerInput:{
+        backgroundColor: 'black',
+        width: '100%',
     }
 });

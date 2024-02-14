@@ -15,13 +15,16 @@ export default Header
 
 const styles = StyleSheet.create ({
     container: {
-            backgroundColor: colors.petrol_100,
+            backgroundColor: 'black',
             flexDirection: "row",
             justifyContent: "center",
             alignItems: "center",
-            heigth: 80,
+            marginLeft: 10,
           },
     text: {
-        fontSize: 30,
+        fontSize: 20,
+        color: "white",
+        textAlign: 'center',
+        fontWeight: 'bold'
     }
 })

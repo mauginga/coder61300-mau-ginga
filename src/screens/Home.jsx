@@ -1,16 +1,20 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, Image } from "react-native"
 import Header from "../components/Header"
-import ItemListCategories from "./ItemListCategories"
-import { colors } from "../global/colors"
+import Categories from "../components/Categories";
 
-function Home () {
+function Home ({setCategorySelected}) {
     return (
         <View style = {styles.container}>
-            <Text>
-                Bienvenidos BAUMA - Venta de Insumos Petroleros
+            <Image
+            source={require('../../assets/bauma-logo.png')}
+            style={styles.logo}
+            resizeMode="contain"
+            />
+            <Text style = {styles.text}>
+                Insumos Petroleros
             </Text>
-            <Header title ='Categories'/>
-            <ItemListCategories />
+            <Header title={'Categorias'} />
+            <Categories setCategorySelected ={setCategorySelected} />
         </View>
     )
 }
@@ -18,8 +22,23 @@ function Home () {
 export default Home
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         width: '100%',
-        backgroundColor: colors.petrol_200,
+        backgroundColor: 'black',
+        paddingTop: 8,
+        marginTop: 25,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    text: {
+        flex: 1,
+        fontSize: 20,
+        color: "white",
+        textAlign: 'center'
+    },
+    logo: {
+        width: 60,
+        height: 60,
+        marginRight: 20,
     }
 });

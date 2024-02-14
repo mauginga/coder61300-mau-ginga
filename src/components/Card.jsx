@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: colors.petrol_400,
-        flex: 1,
         width: '100%',
         shadowColor: colors.petrol_300,
         shadowOffset:{
