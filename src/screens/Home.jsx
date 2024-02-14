@@ -1,21 +1,25 @@
 import { View, Text, StyleSheet, Image } from "react-native"
 import Header from "../components/Header"
 import Categories from "../components/Categories";
+import { fonts } from "../global/fonts";
+
 
 function Home ({setCategorySelected}) {
     return (
-        <View style = {styles.container}>
-            <Image
-            source={require('../../assets/bauma-logo.png')}
-            style={styles.logo}
-            resizeMode="contain"
-            />
-            <Text style = {styles.text}>
-                Insumos Petroleros
-            </Text>
-            <Header title={'Categorias'} />
+        <>
+            <View style = {styles.container}>
+                <Image
+                source={require('../../assets/bauma-logo.png')}
+                style={styles.logo}
+                resizeMode="contain"
+                />
+                <Text style = {styles.text}>
+                    Insumos Petroleros
+                </Text>
+                <Header title={'Categorias'} />
+            </View>
             <Categories setCategorySelected ={setCategorySelected} />
-        </View>
+        </>
     )
 }
 
@@ -34,7 +38,8 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 20,
         color: "white",
-        textAlign: 'center'
+        textAlign: 'center',
+        fontFamily: 'CabinBold',
     },
     logo: {
         width: 60,

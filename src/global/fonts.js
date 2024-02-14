@@ -1,4 +1,4 @@
 export const fonts = {
-    CabinBold : (require('../../assets/fonts/Cabin-Bold.ttf')),
-    CabinRegular : (require('../../assets/fonts/Cabin-Regular.ttf')),
+    CabinBold : (require('../../assets/Fonts/Cabin-Bold.ttf')),
+    CabinRegular : (require('../../assets/Fonts/Cabin-Regular.ttf')),
 }
