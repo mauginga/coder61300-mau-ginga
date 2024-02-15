@@ -7,7 +7,7 @@ import { colors } from "../global/colors";
 const Categories = ({setCategorySelected}) => {
 
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <FlatList
                 style={styles.container} 
                 data = {categories}
@@ -23,8 +23,6 @@ export default Categories
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         width: "100%",
-
     }
 })

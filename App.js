@@ -18,7 +18,7 @@ export default function App() {
 
   return (
     <>
-     <View style = {StyleSheet.container}> 
+     <View style = {styles.container}> 
       <StatusBar style="auto" />
         {categorySelected
         ?(

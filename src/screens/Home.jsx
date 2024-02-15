@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Image } from "react-native"
 import Header from "../components/Header"
 import Categories from "../components/Categories";
-import { fonts } from "../global/fonts";
 
 
 function Home ({setCategorySelected}) {
