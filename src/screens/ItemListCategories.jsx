@@ -5,8 +5,9 @@ import { colors } from "../global/colors";
 import allProducts from "../data/products.json";
 import ProductItem from "../components/ProductItem";
 import Search from "../components/Search";
+// import { GoMoveToStart } from "@primer/octicons-react";
 
-const ItemListCategories = ({category}) =>{
+const ItemListCategories = ({category, setCategorySelected}) =>{
 
     const [products, setProducts] = useState([])
     const [keyword, setKeyword] = useState("")
@@ -24,11 +25,15 @@ const ItemListCategories = ({category}) =>{
 
     return (
         <>
-            <View style={styles.headerInput}>     
-                <Header title={category || "Productos"} style = {styles.headerProduct}/>
-            </View> 
-
-            <View style={styles.container}>  
+            <View style={styles.container}>
+                <Pressable style={styles.text} onPress = {()=> setCategorySelected('')}>
+                    <Text>
+                        Inicio
+                    </Text>
+                </Pressable>
+                <View style={styles.headerInput}>     
+                    <Header title={category || "Productos"} style = {styles.headerProduct}/>
+                </View> 
                     <Search onSearch={setKeyword}/>
                         <FlatList 
                         data={products}

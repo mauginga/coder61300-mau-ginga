@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import ItemListCategories from './src/screens/ItemListCategories';
 import { fonts } from './src/global/fonts';
+import Navigator from './src/navigation/Navigator';
 
 export default function App() {
 
@@ -28,6 +29,8 @@ export default function App() {
           <Home setCategorySelected={setCategorySelected}  />
         )}
       </View> 
+      {/* <Navigator /> */}
+
     </>
   );
 }
