@@ -28,9 +28,6 @@ const ItemListCategories = ({navigation, route}) =>{
     return (
         <>
             <View style={styles.container}>
-                <View style={styles.headerInput}>     
-                    <Header title={category || "Productos"} style = {styles.headerProduct}/>
-                </View> 
                     <Search onSearch={setKeyword}/>
                         <FlatList 
                         data={products}

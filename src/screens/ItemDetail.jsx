@@ -37,7 +37,6 @@ const ItemDetail = ({navigation, route}) => {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style = {styles.main} >
-            <Header title={"Detalle"}/>
             {product ?
             (
             

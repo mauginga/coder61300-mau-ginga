@@ -8,7 +8,7 @@ import Header from "../components/Header";
 
 const Navigator = () => {
 
-    const Stack = createNativeStackNavigator()
+    const Stack = createNativeStackNavigator();
 
     return (
         <NavigationContainer>
@@ -30,7 +30,6 @@ const Navigator = () => {
                 <Stack.Screen name="Categorías" component={ItemListCategories}/>
             </Stack.Navigator>
         </NavigationContainer>
-                    //    /* /*cambiar por ItemDetail-hacer componente*/ */
     )
 
 };
