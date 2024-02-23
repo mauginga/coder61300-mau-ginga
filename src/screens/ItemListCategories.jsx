@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 import React, {useEffect, useState} from "react";
 import Header from "../components/Header";
 import { colors } from "../global/colors";
@@ -7,7 +7,7 @@ import ProductItem from "../components/ProductItem";
 import Search from "../components/Search";
 // import { GoMoveToStart } from "@primer/octicons-react";
 
-const ItemListCategories = ({category, setCategorySelected}) =>{
+const ItemListCategories = ({category, setCategorySelected, setProductDetailId}) =>{
 
     const [products, setProducts] = useState([])
     const [keyword, setKeyword] = useState("")
@@ -26,8 +26,8 @@ const ItemListCategories = ({category, setCategorySelected}) =>{
     return (
         <>
             <View style={styles.container}>
-                <Pressable style={styles.text} onPress = {()=> setCategorySelected('')}>
-                    <Text>
+                <Pressable onPress = {()=> setCategorySelected('')}>
+                    <Text style={styles.text} >
                         Inicio
                     </Text>
                 </Pressable>
@@ -37,7 +37,7 @@ const ItemListCategories = ({category, setCategorySelected}) =>{
                     <Search onSearch={setKeyword}/>
                         <FlatList 
                         data={products}
-                        renderItem={({item})=><ProductItem item ={item}/>}
+                        renderItem={({item})=><ProductItem item ={item} setProductDetailId={setProductDetailId}/>}
                         keyExtractor={(item)=> item.id}
                         />
             </View>
@@ -49,6 +49,9 @@ export default ItemListCategories;
 
 const styles = StyleSheet.create({
     container: {
+        paddingTop: 8,
+        paddingHorizontal: 5,
+        marginTop: 25,
         width: '100%',
         backgroundColor: colors.lighten,
         flexDirection: "column",

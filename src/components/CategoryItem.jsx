@@ -18,5 +18,5 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 20,
         fontFamily: 'CabinRegular',
-    }
+    },
 })
