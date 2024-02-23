@@ -5,12 +5,14 @@ import { colors } from "../global/colors";
 import allProducts from "../data/products.json";
 import ProductItem from "../components/ProductItem";
 import Search from "../components/Search";
-// import { GoMoveToStart } from "@primer/octicons-react";
 
-const ItemListCategories = ({category, setCategorySelected, setProductDetailId}) =>{
+
+const ItemListCategories = ({navigation, route}) =>{
 
     const [products, setProducts] = useState([])
     const [keyword, setKeyword] = useState("")
+
+    const {category} = route.params;
 
     useEffect(()=>{
         if (category) {
@@ -26,18 +28,13 @@ const ItemListCategories = ({category, setCategorySelected, setProductDetailId})
     return (
         <>
             <View style={styles.container}>
-                <Pressable onPress = {()=> setCategorySelected('')}>
-                    <Text style={styles.text} >
-                        Inicio
-                    </Text>
-                </Pressable>
                 <View style={styles.headerInput}>     
                     <Header title={category || "Productos"} style = {styles.headerProduct}/>
                 </View> 
                     <Search onSearch={setKeyword}/>
                         <FlatList 
                         data={products}
-                        renderItem={({item})=><ProductItem item ={item} setProductDetailId={setProductDetailId}/>}
+                        renderItem={({item})=><ProductItem navigation={navigation} item={item} />}
                         keyExtractor={(item)=> item.id}
                         />
             </View>

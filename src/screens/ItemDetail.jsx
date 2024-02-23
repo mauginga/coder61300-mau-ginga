@@ -6,10 +6,12 @@ import { colors } from '../global/colors';
 
 
 
-const ItemDetail = ({productDetailId, setProductDetailId}) => {
+const ItemDetail = ({navigation, route}) => {
     const [product, setProduct] = useState(null);
     const[isPortrait, setIsPortrait] = useState(true);
     const[isLandscape, setIsLandscape] = useState(false);
+
+    const{id} = route.params;
 
     const {width, height} = useWindowDimensions();
 
@@ -28,24 +30,14 @@ const ItemDetail = ({productDetailId, setProductDetailId}) => {
 
 
     useEffect(()=>{
-        const productFinded = allProducts.find((product)=> product.id === productDetailId);
+        const productFinded = allProducts.find((product)=> product.id === id);
         setProduct(productFinded)
-    }, [productDetailId])
-    const goBack = ()=>{
-        setProductDetailId(0);
-    }
+    }, [id])
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style = {styles.main} >
             <Header title={"Detalle"}/>
-            <Pressable 
-            onPress={goBack}
-            style={styles.goBack}
-            >
-                <Text style={styles.buttonText}>Go Back</Text>
-            </Pressable>
-
             {product ?
             (
             
@@ -128,9 +120,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
       },
       imageLandscape: {
-        aspectRatio: 0.3,
-        width: "50%",
-        height: "50%",
+        aspectRatio: 1,
         marginBottom: 10,
         alignSelf: 'center', // Centra la imagen horizontalmente
     },

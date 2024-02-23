@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import Categories from "../components/Categories";
 
 
-function Home ({setCategorySelected}) {
+function Home ({navigation}) {
     return (
         <>
             <View style = {styles.container}>
@@ -15,9 +15,8 @@ function Home ({setCategorySelected}) {
                 <Text style = {styles.text}>
                     Insumos Petroleros
                 </Text>
-                <Header title={'Categorias'} />
             </View>
-            <Categories setCategorySelected ={setCategorySelected} />
+            <Categories navigation={navigation} />
         </>
     )
 }

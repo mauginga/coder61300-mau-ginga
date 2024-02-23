@@ -4,7 +4,7 @@ import categories from '../data/categories.json';
 import CategoryItem from './CategoryItem';
 import { colors } from "../global/colors";
 
-const Categories = ({setCategorySelected}) => {
+const Categories = ({navigation}) => {
 
     return (
         <View style={styles.container}>
@@ -12,7 +12,7 @@ const Categories = ({setCategorySelected}) => {
                 style={styles.container} 
                 data = {categories}
                 keyExtractor ={(category) => category}
-                renderItem={({item}) => <CategoryItem setCategorySelected={setCategorySelected} category ={item}
+                renderItem={({item}) => <CategoryItem navigation = {navigation} category ={item}
                 />}
             />
         </View>

@@ -1,20 +1,16 @@
 import { StyleSheet, SafeAreaView, Platform} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
 import Constants from 'expo-constants';
-import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { fonts } from './src/global/fonts';
 
-import ItemListCategories from './src/screens/ItemListCategories';
-import Home from './src/screens/Home';
-import ItemDetail from './src/screens/ItemDetail';
+
 import Navigator from './src/navigation/Navigator';
 import { colors } from './src/global/colors';
 
 export default function App() {
 
-  const [categorySelected, setCategorySelected] = useState("");
-  const [productDetailId, setProductDetailId] = useState(0);
+  // const [categorySelected, setCategorySelected] = useState("");
+  // const [productDetailId, setProductDetailId] = useState(0);
 
 
   const [fontsLoaded] = useFonts(fonts);
@@ -25,21 +21,7 @@ export default function App() {
 
   return (
     <>
-     <SafeAreaView style = {styles.container}> 
-      <StatusBar style="auto" />
-        {productDetailId ? (
-        <ItemDetail productDetailId={productDetailId} setProductDetailId={setProductDetailId} /> 
-        ): categorySelected?(
-          <ItemListCategories 
-          category={categorySelected} 
-          setCategorySelected={setCategorySelected}
-          setProductDetailId={setProductDetailId}    
-        />):(
-          <Home setCategorySelected={setCategorySelected}  />
-        )}
-      </SafeAreaView> 
-      {/* <Navigator /> */}
-
+      <Navigator />
     </>
   );
 }
@@ -54,3 +36,17 @@ const styles = StyleSheet.create({
 
   }
 })
+
+{/* <SafeAreaView style = {styles.container}> 
+<StatusBar style="auto" />
+  {productDetailId ? (
+  <ItemDetail productDetailId={productDetailId} setProductDetailId={setProductDetailId} /> 
+  ): categorySelected?(
+    <ItemListCategories 
+    category={categorySelected} 
+    setCategorySelected={setCategorySelected}
+    setProductDetailId={setProductDetailId}    
+  />):(
+    <Home setCategorySelected={setCategorySelected}  />
+  )}
+</SafeAreaView>  */}

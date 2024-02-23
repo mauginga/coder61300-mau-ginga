@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from "r
 import Card from "./Card";
 import { useEffect, useState } from "react";
 
-const ProductItem = ({item, setProductDetailId}) => {
+const ProductItem = ({item, navigation}) => {
     const[isPortrait, setIsPortrait] = useState(true);
     const[isLandscape, setIsLandscape] = useState(false);
 
@@ -19,7 +19,7 @@ const ProductItem = ({item, setProductDetailId}) => {
     },[width, height])
 
     return (
-    <Pressable onPress={()=>setProductDetailId(item.id)}>
+    <Pressable onPress={()=>navigation.navigate("Detalle del Producto", {id: item.id})}>
         <Card  style = {styles.card}>
             <Text style = {width < 400 ? styles.textMin : styles.text}>{item.title}</Text>
             <Image style={styles.image}  source={ isPortrait? {uri: item.images[0]} : {uri: item.images[1]} }  />
