@@ -2,6 +2,8 @@ import { StyleSheet, SafeAreaView, Platform} from 'react-native';
 import Constants from 'expo-constants';
 import { useFonts } from 'expo-font';
 import { fonts } from './src/global/fonts';
+import { Provider } from 'react-redux';
+import store from './src/store';
 
 
 import { colors } from './src/global/colors';
@@ -20,9 +22,9 @@ export default function App() {
   }
 
   return (
-    <>
+    <Provider store = {store}>
       <TabNavigator />
-    </>
+    </Provider>
   );
 }
 

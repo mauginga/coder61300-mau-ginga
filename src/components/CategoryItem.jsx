@@ -1,7 +1,10 @@
 import { Pressable, StyleSheet, Text } from "react-native";
 import Card from "./Card";
+import { useDispatch } from "react-redux";
 
 const CategoryItem = ({category, navigation}) => {
+    const dispatch = useDispatch();
+
     return (
         <>
         <Card style ={{paddingTop: 20}}>
