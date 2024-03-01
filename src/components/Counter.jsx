@@ -7,7 +7,7 @@ import { TextInput } from 'react-native'
 const Counter = () => {
     const count = useSelector((state)=>state.counterReducer.value);
     const dispatch = useDispatch()
-    const [inputToAdd, setInputAdd] = useState (0);
+    const [inputToAdd, setInputAdd] = useState ("");
     const confirmAdd =()=> {
       dispatch(incrementByAmount(inputToAdd))
     }
@@ -26,7 +26,7 @@ const Counter = () => {
         <View style = {styles.buttonsContainer}>
           <TextInput
             placeholder ="Cantidad a aumentar"
-            value = {inputToAdd}
+            value = {inputToAdd.toString()}
             onChangeText={ text => setInputAdd(Number(text))}
             style = {styles.spanInput}
           />
