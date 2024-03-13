@@ -7,7 +7,8 @@ import store from './src/store';
 
 
 import { colors } from './src/global/colors';
-import TabNavigator from './src/navigation/TabNavigator';
+// import TabNavigator from './src/navigation/TabNavigator';
+import MainNavigator from './src/navigation/MainNavigator';
 
 export default function App() {
 
@@ -23,7 +24,7 @@ export default function App() {
 
   return (
     <Provider store = {store}>
-      <TabNavigator />
+      <MainNavigator />
     </Provider>
   );
 }

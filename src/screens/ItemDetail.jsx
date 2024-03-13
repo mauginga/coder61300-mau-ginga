@@ -1,8 +1,9 @@
 import { Pressable, StyleSheet, Text, View, Image, useWindowDimensions, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import allProducts from '../data/products.json';
-import Header from '../components/Header';
 import { colors } from '../global/colors';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/shop/cartSlice';
 
 
 
@@ -12,6 +13,12 @@ const ItemDetail = ({navigation, route}) => {
     const[isLandscape, setIsLandscape] = useState(false);
 
     const{id} = route.params;
+
+    const dispatch = useDispatch();
+    const onAddCart = ()=>{
+      dispatch(addItem({...product, quantity:1}))
+      // cantidad hardcodeada en 1 por ahora
+    }
 
     const {width, height} = useWindowDimensions();
 
@@ -50,8 +57,8 @@ const ItemDetail = ({navigation, route}) => {
                 <Text style={styles.title}>{product.title}</Text>
                 <Text style={styles.description}>{product.description}</Text>
                 <Text style={styles.price}>{product.price}</Text>
-                <Pressable style={styles.buyNow}>
-                    <Text style={styles.buttonText}>BUY NOW</Text>
+                <Pressable style={styles.buyNow} onPress={onAddCart} >
+                    <Text style={styles.buttonText} >Add to Cart</Text>
                 </Pressable>
             </View>
             ): (
