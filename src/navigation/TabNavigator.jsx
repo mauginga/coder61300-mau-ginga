@@ -5,8 +5,9 @@ import { StyleSheet, View, Text } from "react-native";
 import ShopStack from './ShopStack';
 import CartStack from './CartStack';
 import { colors } from "../global/colors";
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, Ionicons } from '@expo/vector-icons';
 import OrdersStack from "./OrdersStack";
+import MyProfileStack from "./MyProfileStack";
 
 
 const TabNavigator = () => {
@@ -59,8 +60,21 @@ const TabNavigator = () => {
                         );
                     },
                 }}/>
-            </Tab.Navigator>
-    )
+                    <Tab.Screen  
+                    name = "MyProfileStack" 
+                    component={MyProfileStack}
+                    options={{
+                        tabBarIcon : ({ focused }) => {
+                            return(
+                                <View style = {styles.tabContainer}>
+                                    <Ionicons name="person-circle-outline" size={30} color={ focused ? "grey" : "black" } />
+                                    <Text style = {{flexDirection:"row", color: focused? "gray" : "black"}}>My Profile</Text>
+                                </View>
+                            );
+                        },
+                    }}/>
+                </Tab.Navigator>
+    );
 }
 
 export default TabNavigator
